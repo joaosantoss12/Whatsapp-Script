@@ -1,4 +1,3 @@
-npm i --save @wppconnect-team/wppconnect
-npm install
+npm install @wppconnect-team/wppconnect
 
 node index.js

@@ -1,5 +1,3 @@
-// Supports ES6
-// import { create, Whatsapp } from '@wppconnect-team/wppconnect';
 const wppconnect = require('@wppconnect-team/wppconnect');
 
 wppconnect
@@ -7,19 +5,18 @@ wppconnect
   .then((client) => start(client))
   .catch((error) => console.log(error));
 
-//
 
 //casinos = []
 
-//binance_id = '389574656'
-//revolut_id = 'revolut.me/joor6bex'
+binance_id = '389574656'
+revolut_id = 'revolut.me/joor6bex'
 
-//method = ''
+method = ''
 
 
 function start(client){
     client.onMessage((message) => {
-        if(message.body.includes('Vagas:') || message.body.includes('VAGAS:')){
+        if(message.body.toUpperCase().includes('VAGAS:')){
             // author -> numero ; from -> onde recebi? chat privado ou chat grupo? @c é contacto @g é grupo
             // [object Object] 1712149541 351910468010@c.us 120363278410912710@g.us
             // console.log(message.sender + ' ' + message.t + ' ' + message.author + ' ' + message.from)
@@ -34,18 +31,18 @@ function start(client){
                     console.error('Error on sending message: ', error)
                 });
 
-            /*if(message.body.includes('Binance') || message.body.includes('BINANCE')){
+            if(message.body.toUpperCase().includes('BINANCE')){
                 method = 'BINANCE'
 
             }
-            else if(message.body.includes('Revolut' || message.body.includes('REVOLUT'))){
+            else if(message.body.toUpperCasse().includes('REVOLUT')){
                 method = 'REVOLUT'
-            }*/
+            }
         }
 
 
 
-        /*else if(message.body.includes('10') || message.body.includes('15') || message.body.include('20')){
+        else if(message.body.includes('10') || message.body.includes('15') || message.body.includes('20') || message.body.includes('25') || message.body.includes('30')){
             if(method === 'BINANCE'){
                 client
                     .sendText(message.from, binance_id)
@@ -58,6 +55,7 @@ function start(client){
             }
             else if(method === 'REVOLUT'){
                 client
+
                     .sendText(message.from, revolut_id)
                     .then((result) => {
                         console.log('Result: ', result)
@@ -66,6 +64,6 @@ function start(client){
                         console.error('Error on sending message: ', error)
                     });
             }
-        }*/
+        }
     });
 }
