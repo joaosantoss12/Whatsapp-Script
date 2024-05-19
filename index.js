@@ -5,16 +5,6 @@ wppconnect
   .then((client) => start(client))
   .catch((error) => console.log(error));
 
-  
-dealer = ''
-
-//casinos = []
-
-binance_id = '389574656'
-revolut_id = 'revolut.me/joor6bex'
-
-method = ''
-
 
 function start(client){
     
@@ -40,38 +30,6 @@ function start(client){
                 .catch((error) => {
                     console.error('Error on sending message: ', error)
                 });
-
-            if(message.body.toUpperCase().includes('BINANCE')){
-                method = 'BINANCE'
-            }
-            else if(message.body.toUpperCase().includes('REVOLUT')){
-                method = 'REVOLUT'
-            }
-        }
-
-
-
-        else if(message.author == dealer && (message.body.includes('10') || message.body.includes('15') || message.body.includes('20') || message.body.includes('25') || message.body.includes('30'))){
-            if(method == 'BINANCE'){
-                client
-                    .sendText(message.from, binance_id)
-                    .then((result) => {
-                        //console.log('Result: ', result)
-                    })
-                    .catch((error) => {
-                        console.error('Error on sending message: ', error)
-                    });
-            }
-            else if(method == 'REVOLUT'){
-                client
-                    .sendText(message.from, revolut_id)
-                    .then((result) => {
-                        //console.log('Result: ', result)
-                    })
-                    .catch((error) => {
-                        console.error('Error on sending message: ', error)
-                    });
-            }
         }
 
     });
